@@ -15,6 +15,11 @@ const selectShopCollections = createSelector(
   (shop) => shop.collections
 );
 
+const selectShopCollectionsForPreview = createSelector(
+  [selectShopCollections],
+  (collections) => Object.keys(collections).map((key) => collections[key])
+);
+
 const selectShopCollection = memoize((collectionUrlParam) => {
    return createSelector(
     [selectShopCollections],
@@ -22,4 +27,4 @@ const selectShopCollection = memoize((collectionUrlParam) => {
   );
 });
 
-export  {selectShopCollections, selectShopCollection};
+export  {selectShopCollections, selectShopCollection, selectShopCollectionsForPreview};
